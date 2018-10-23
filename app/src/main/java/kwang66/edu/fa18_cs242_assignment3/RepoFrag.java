@@ -48,19 +48,12 @@ public class RepoFrag extends Fragment {
             @Override
             public void onResponse(Call<List<Repo>> call, Response<List<Repo>> response) {
                 List<Repo> repo = response.body();
-
                 RecyclerView mRecyclerView = (RecyclerView) getView().findViewById(R.id.recycler_list);
-
-                // use this setting to improve performance if you know that changes
-                // in content do not change the layout size of the RecyclerView
                 mRecyclerView.setHasFixedSize(true);
-
-
                 RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
                 LayoutManagerType mCurrentLayoutManagerType = LayoutManagerType.LINEAR_LAYOUT_MANAGER;
                 mRecyclerView.setLayoutManager(mLayoutManager);
-
-                // specify an adapter (see also next example)
+                // connect data set with view
                 RecyclerView.Adapter mAdapter = new RecyclerViewAdapter(repo,context);
                 mRecyclerView.setAdapter(mAdapter);
             }

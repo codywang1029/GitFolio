@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,21 +21,19 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     Context mContext;
 
     public static class MyViewHolder extends ViewHolder {
-        // each data profile_item is just a string in this case
         private final TextView name;
         private final TextView owner;
         private final TextView description;
-
+        //get each view from layout
         public MyViewHolder(View v) {
             super(v);
-
             name = v.findViewById(R.id.text_view);
             owner = v.findViewById(R.id.user);
             description = v.findViewById(R.id.description);
         }
     }
 
-    // Provide a suitable constructor (depends on the kind of dataset)
+
     public RecyclerViewAdapter(List<Repo> repo,Context context) {
         this.repo = repo;
         this.mContext=context;
@@ -44,20 +41,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     // Create new views (invoked by the layout manager)
     @Override
-    public RecyclerViewAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent,
-                                                     int viewType) {
-        // create a new view
+    public RecyclerViewAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.list_item, parent, false);
         MyViewHolder vh = new MyViewHolder(v);
         return vh;
     }
 
-    // Replace the contents of a view (invoked by the layout manager)
+    //replace content of a view
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
-        // - get element from your dataset at this position
-        // - replace the contents of the view with that element
         holder.name.setText(repo.get(position).getName());
         holder.name.setOnClickListener(new View.OnClickListener() {
             @Override

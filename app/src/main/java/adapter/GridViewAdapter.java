@@ -38,6 +38,13 @@ public class GridViewAdapter extends BaseAdapter {
         return position;
     }
 
+    /**
+     * customize view based on different content to be displayed
+     * @param position
+     * @param convertView
+     * @param parent
+     * @return the view created
+     */
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) mContext

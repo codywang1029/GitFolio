@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private FollowerFrag followerFrag;
     private FollowingFrag followingFrag;
 
+    //Navigation functionality with fragment transaction
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -66,6 +67,10 @@ public class MainActivity extends AppCompatActivity {
         setFragment(profileFrag);
     }
 
+    /**
+     * Do fragment transaction
+     * @param fragment the fragment to be displayed
+     */
     private void setFragment(Fragment fragment){
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.main_frame,fragment);

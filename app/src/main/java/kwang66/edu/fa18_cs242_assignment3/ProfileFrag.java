@@ -67,6 +67,7 @@ public class ProfileFrag extends Fragment {
                 else{
                     create.setText("Created by "+user.getName()+" at "+user.getCreatedAt().substring(0,10));
                 }
+                //initialize data set
                 List<String> sourceName=new ArrayList<>();
                 sourceName.add("Repo Count");
                 sourceName.add("Follower");
@@ -77,6 +78,7 @@ public class ProfileFrag extends Fragment {
                 sourceValue.add(user.getFollowers());
                 sourceValue.add(user.getFollowing());
                 sourceValue.add(-1);
+                //connect data set with view
                 GridView gridView = (GridView)getView().findViewById(R.id.grid);
                 GridViewAdapter adapter = new GridViewAdapter(sourceName, sourceValue,context);
                 gridView.setAdapter(adapter);
