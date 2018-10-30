@@ -16,6 +16,11 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 
@@ -31,13 +36,15 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static android.support.constraint.Constraints.TAG;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class ProfileFrag extends Fragment {
-    private UserInfo user;
+
+
 
     public ProfileFrag() {
         // Required empty public constructor
@@ -48,13 +55,12 @@ public class ProfileFrag extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        EndPoint service = RetrofitClientInstance.getRetrofitInstance().create(EndPoint.class);
-        Call<UserInfo> call = service.getUser("octocat");
-        final Context context= this.getContext();
-        call.enqueue(new Callback<UserInfo>() {
+        DatabaseReference mProfileReference = FirebaseDatabase.getInstance().getReference()
+                .child("profile");
+        ValueEventListener postListener = new ValueEventListener() {
             @Override
-            public void onResponse(Call<UserInfo> call, Response<UserInfo> response) {
-                user = response.body();
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                UserInfo user = dataSnapshot.getValue(UserInfo.class);
                 ImageView avatar= (ImageView) getView().findViewById(R.id.avatar);
                 Picasso.get().load(user.getAvatarUrl()).into(avatar);
                 TextView login = (TextView) getView().findViewById(R.id.login);
@@ -80,15 +86,21 @@ public class ProfileFrag extends Fragment {
                 sourceValue.add(-1);
                 //connect data set with view
                 GridView gridView = (GridView)getView().findViewById(R.id.grid);
-                GridViewAdapter adapter = new GridViewAdapter(sourceName, sourceValue,context);
+                GridViewAdapter adapter = new GridViewAdapter(sourceName, sourceValue, getContext());
                 gridView.setAdapter(adapter);
 
             }
+
             @Override
-            public void onFailure(Call<UserInfo> call, Throwable t) {
-                Log.d("STATE","Fail");
+            public void onCancelled(DatabaseError databaseError) {
+
+                Log.w(TAG, "loadPost:onCancelled", databaseError.toException());
+
             }
-        });
+        };
+        mProfileReference.addValueEventListener(postListener);
+
+
         return inflater.inflate(R.layout.fragment_profile, container, false);
     }
 

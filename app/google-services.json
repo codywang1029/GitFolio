@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "476244896942",
+    "firebase_url": "https://gitfolio-kwang66.firebaseio.com",
+    "project_id": "gitfolio-kwang66",
+    "storage_bucket": "gitfolio-kwang66.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:476244896942:android:6ba3b582e45a1c76",
+        "android_client_info": {
+          "package_name": "kwang66.edu.fa18_cs242_assignment3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "476244896942-huria3k7dr9fdspq4n5hnfk4f1avgt6p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "kwang66.edu.fa18_cs242_assignment3",
+            "certificate_hash": "4c3d365b4111914d511d6855ebc8b0036b45f883"
+          }
+        },
+        {
+          "client_id": "476244896942-toqj86tto820o5j8ckilb4t5vg10sc71.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhv1nslO4PqsXBe9DMFHjkOejVp3w8nHc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "476244896942-toqj86tto820o5j8ckilb4t5vg10sc71.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

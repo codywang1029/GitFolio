@@ -1,9 +1,14 @@
 package adapter;
 
+import android.app.Activity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -11,6 +16,7 @@ import android.widget.Button;
 import java.util.List;
 
 import kwang66.edu.fa18_cs242_assignment3.R;
+import kwang66.edu.fa18_cs242_assignment3.RepoFrag;
 
 public class GridViewAdapter extends BaseAdapter {
     List<String> sourceName;
@@ -56,19 +62,19 @@ public class GridViewAdapter extends BaseAdapter {
             Button button = (Button) gridView.findViewById(R.id.button);
             if (position==3){
                 button.setText("Website");
-                button.setBackgroundColor(0xFF009688);
+                button.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.rounded_button_blue));
             }
             if (position==0){
                 button.setText(sourceName.get(position)+"\n"+sourceValue.get(position));
-                button.setBackgroundColor(0xFFFF5722);
+                button.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.rounded_button_orange));
             }
             if (position==2){
                 button.setText(sourceName.get(position)+"\n"+sourceValue.get(position));
-                button.setBackgroundColor(0xFF2F4056);
+                button.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.rounded_button_yellow));
             }
             if (position==1){
                 button.setText(sourceName.get(position)+"\n"+sourceValue.get(position));
-                button.setBackgroundColor(0xFFFFB800);
+                button.setBackgroundDrawable(mContext.getResources().getDrawable(R.drawable.rounded_button_green));
             }
             button.setOnClickListener(new View.OnClickListener(){
                 @Override
